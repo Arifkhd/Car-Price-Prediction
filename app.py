@@ -119,8 +119,7 @@ def main():
         
         
     if st.button('Predict'):
-    # Get the prediction result
-    result = predict(Name, Year, Km_Driven, Fuel_Type, Seller_Type, Transmission, Owner_Type)
+        result = predict(Name, Year, Km_Driven, Fuel_Type, Seller_Type, Transmission, Owner_Type)
     
     # Check if the result is a list or array
     if isinstance(result, (list, tuple, np.ndarray)):
