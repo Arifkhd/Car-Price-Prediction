@@ -119,10 +119,17 @@ def main():
         
         
     if st.button('Predict'):
-        result = predict(Name, Year, Km_Driven, Fuel_Type, Seller_Type, Transmission, Owner_Type)
-        # Ensure the result is formatted without brackets
-        formatted_result = f"₹{result[0]}" if isinstance(result, (list, tuple)) else f"₹{result}"
-        st.success('The car price is : {}'.format(formatted_result))                          
+    # Get the prediction result
+    result = predict(Name, Year, Km_Driven, Fuel_Type, Seller_Type, Transmission, Owner_Type)
+    
+    # Check if the result is a list or array
+    if isinstance(result, (list, tuple, np.ndarray)):
+        formatted_result = f"₹{result[0]}"  # Access the first element
+    else:
+        formatted_result = f"₹{result}"  # If not a list/array, directly format the result
+    
+    # Display the formatted result
+    st.success(f'The car price is: {formatted_result}')                         
                           
         
 if __name__ == '__main__':
