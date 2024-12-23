@@ -119,8 +119,10 @@ def main():
         
         
     if st.button('Predict'):
-        result = predict(Name,Year,Km_Driven,Fuel_Type,Seller_Type,Transmission,Owner_Type)
-        st.success('The car price is : ₹{} '.format(result))                          
+        result = predict(Name, Year, Km_Driven, Fuel_Type, Seller_Type, Transmission, Owner_Type)
+        # Ensure the result is formatted without brackets
+        formatted_result = f"₹{result[0]}" if isinstance(result, (list, tuple)) else f"₹{result}"
+        st.success('The car price is : {}'.format(formatted_result))                          
                           
         
 if __name__ == '__main__':
