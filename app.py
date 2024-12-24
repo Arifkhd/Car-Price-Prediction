@@ -14,7 +14,7 @@ st.title('Car Price Prediction')
 
 def predict(Name,Year,Km_Driven,Fuel_Type,Seller_Type,Transmission,Owner_Type):
     prediction = model.predict([[Name,Year,Km_Driven,Fuel_Type,Seller_Type,Transmission,Owner_Type]])
-    return prediction 
+    return prediction[0]
     
     
 def main():
@@ -119,16 +119,9 @@ def main():
         
         
     if st.button('Predict'):
-        result = predict(Name, Year, Km_Driven, Fuel_Type, Seller_Type, Transmission, Owner_Type)
-    
-    # Check if the result is a list or array
-    if isinstance(result, (list, tuple, np.ndarray)):
-        formatted_result = f"₹{result[0]}"  # Access the first element
-    else:
-        formatted_result = f"₹{result}"  # If not a list/array, directly format the result
-    
-    # Display the formatted result
-    st.success(f'The car price is: {formatted_result}')                         
+        # Call the predict function and display the result
+        result = predict(Name,Year,Km_Driven,Fuel_Type,Seller_Type,Transmission,Owner_Type)
+        st.success(f'Predicted House Price: ₹{result:,.1f}')  # Format for better readability                    
                           
         
 if __name__ == '__main__':
