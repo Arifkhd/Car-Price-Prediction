@@ -7,7 +7,7 @@ Created on Thu Dec 19 18:21:18 2024
 import streamlit as st
 import joblib
 import pandas as pd
-from sklearn.ensemble import AdaBoostRegressor
+from sklearn.linear_model import LinearRegression
 model = joblib.load('carprediction.pkl')
 
 st.title('Car Price Prediction')
